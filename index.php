@@ -173,7 +173,7 @@
                         <option value="Matutino">Matutino</option>
                     </select>
                 </div>
-                
+
                 <br>
 
                 <div>
@@ -189,7 +189,11 @@
                 </div>
 
             </div>
+            
+            <br>
 
+            <input type="submit" value="Mandar Dados">
+            <input type="reset" value="Limpar Dados">
         </div>
 
     </form>
