@@ -18,7 +18,9 @@
 
     <form class="form-container" method="post">
         <div id="container_principal">
+
             <div id="aluno_container">
+
                 <h2>01 - Dados pessoais do candidato</h2>
 
                 <div>
@@ -144,9 +146,54 @@
 
             </div>
 
+            <div id="escola_container">
+
+                <h2>03 - Informações escolares: </h2>
+
+                <div>
+                    <label for="escola_candidato">Escola de origem: </label>
+                    <input type="text" id="escola_candidato" required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="serieAno_escolar">Série e ano: </label>
+                    <input type="text" id="serieAno_escolar" required>
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="turno_escolar">Turno escolar: </label>
+                    <select id="turno_escolar" name="turno_escolar" required>
+                        <option value="">Selecione</option>
+                        <option value="Noturno">Noturno</option>
+                        <option value="Vespertino">Vespertino</option>
+                        <option value="Matutino">Matutino</option>
+                    </select>
+                </div>
+                
+                <br>
+
+                <div>
+                    <label for="turmaGalera">Turma do Galera Tech: </label>
+                    <input type="text" id="turmaGalera">
+                </div>
+
+                <br>
+
+                <div>
+                    <label for="anoInscricao">Ano da inscrição: </label>
+                    <input type="number" id="anoInscricao" maxlength="4" required>
+                </div>
+
+            </div>
+
         </div>
 
     </form>
+
 </body>
 
 </html>
