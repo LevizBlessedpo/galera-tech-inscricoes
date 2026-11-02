@@ -47,6 +47,7 @@ O objetivo é oferecer um sistema simples e confiável para cadastrar os candida
 ```
 galera-tech/
 ├── index.html              # Formulário de inscrição
+├── sucesso.html            # HTML para mensagem de sucesso no envio da inscrição
 ├── aviso-privacidade.html  # Aviso de privacidade
 └── assets/
     ├── style.css           # Estilos personalizados
@@ -69,7 +70,7 @@ Esta versão é uma demonstração. Use **somente dados fictícios** ao testar. 
 ## Autor
 
 **Levi Santos da Cruz**
-Aluno Galera Teh
+Aluno Galera Tech
 [GitHub](https://github.com/LevizBlessedpo)
 
 ---
