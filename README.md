@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
   <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Laragon-0E83CD?style=for-the-badge&logo=laragon&logoColor=white" alt="Laragon">
 </p>
 
 Formulário web de inscrição para o **Galera Tech**, programa de capacitação gratuita em tecnologia, com aulas presenciais à tarde, exclusivo para estudantes do Ensino Médio de escolas públicas.
