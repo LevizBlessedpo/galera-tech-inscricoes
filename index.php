@@ -15,7 +15,7 @@
 
 <body>
   <header class="cabecalho">
-    <div class="container" style="max-width: 950px">
+    <div class="container" style="max-width: 950px; opacity: 0.9">
       <div class="small text-uppercase fw-bold opacity-75 mb-2">
         Programa de estudos • Inscrição
       </div>
@@ -26,11 +26,6 @@
     </div>
   </header>
   <main class="container py-4" style="max-width: 950px">
-    <div class="alert alert-info border-0" role="note">
-      <strong>Ambiente didático:</strong> este formulário é uma demonstração
-      de front-end, sem gravação em banco de dados. Utilize
-      <strong>somente dados fictícios</strong> nos testes.
-    </div>
     <div class="alert alert-light border" role="note">
       <strong>Sobre o Galera Tech:</strong> capacitação gratuita em
       tecnologia, com aulas presenciais à tarde,
@@ -355,10 +350,10 @@
       </section>
     </form>
     <footer class="text-center py-3">
-      Projeto demonstrativo Galera Tech • HTML, Bootstrap e JavaScript
+      Ficha de Inscrição Galera Tech • HTML, Bootstrap e JavaScript
     </footer>
   </main>
   <script src="assets/validacoes.js"></script>
+  <script src="assets/formulario.js"></script>
 </body>
-
 </html>
