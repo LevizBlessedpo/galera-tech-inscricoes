@@ -27,6 +27,8 @@ body {
 /* ==========================================================
    2. CABEÇALHO E RODAPÉ PADRÃO
    ========================================================== */
+
+
 .cabecalho {
   background: transparent;
   color: #fff;
@@ -34,7 +36,16 @@ body {
   text-align: center;
 }
 
-.cabecalho h1, .cabecalho h3 {
+header.cabecalho {
+  background: linear-gradient(110deg, #122f60, #2463a5) !important;
+  color: #ffffff !important;
+  padding: 2rem 0 1.5rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.cabecalho h1,
+.cabecalho h3 {
   font-weight: 700;
 }
 
@@ -119,17 +130,18 @@ main.container {
 }
 
 .cabecalho img {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    max-height: 50px;
-    width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  max-height: 50px;
+  width: auto;
 }
 
 .cabecalho {
-    background: transparent;
-    color: #fff;
-    padding: 2.5rem 1rem 1rem 1rem;
-    text-align: center;
+  background: transparent;
+  color: #fff;
+  padding: 2.5rem 1rem 1rem 1rem;
+  text-align: center;
 }
+
 .secao .card-body {
   padding: 1.5rem !important;
 }
@@ -199,6 +211,7 @@ main.container {
   font-weight: 600;
   font-size: 0.9rem;
 }
+
 .btn-wizard-prev:hover {
   background: #cbd5e1;
 }
@@ -213,6 +226,7 @@ main.container {
   font-weight: 600;
   font-size: 0.9rem;
 }
+
 .btn-wizard-next:hover,
 .btn-primary:hover {
   background: var(--azul-escuro);
@@ -228,61 +242,121 @@ main.container {
   border: 1px solid var(--cinza-borda);
 }
 
+
 /* ==========================================================
-   5. RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS E TELEMÓVEIS
+   5. RESPONSIVIDADE
    ========================================================== */
+
+/* COMPUTADORES E TELAS MAIORES */
+@media (min-width: 769px) {
+
+  main.container {
+    max-width: 850px !important;
+    padding-top: 1rem !important;
+  }
+
+  .cabecalho {
+    padding: 2rem 1rem 1.5rem;
+  }
+
+  .cabecalho h1 {
+    font-size: 1.75rem;
+  }
+
+  .secao .card-body {
+    padding: 1.5rem !important;
+  }
+}
+
+
+/* CELULARES E TELAS MENORES */
 @media (max-width: 768px) {
-  /* Reduz margens gerais da página para aproveitar o espaço do telemóvel */
+
   body {
-    padding: 0.25rem;
+    background-attachment: scroll;
   }
 
   main.container {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
   }
 
-  /* Ajusta o tamanho do título do cabeçalho */
   .cabecalho {
-    padding: 1.5rem 0.5rem 0.8rem 0.5rem;
+    padding: 1.5rem 0.75rem 1rem;
   }
 
-  .cabecalho h1, .cabecalho h3 {
-    font-size: 1.3rem !important;
+  .cabecalho-conteudo {
+    gap: 0.75rem;
   }
 
-  /* Torna as abas do Wizard deslizantes (scroll horizontal) se não couberem */
-  .wizard-header-tabs {
-    overflow-x: auto;
-    justify-content: flex-start;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
+  .cabecalho img {
+    max-height: 42px;
   }
 
-  .wizard-tab {
-    flex: 0 0 auto;
-    padding: 0.8rem 1rem;
-    font-size: 0.75rem;
+  .cabecalho h1 {
+    font-size: 1.2rem !important;
   }
 
-  /* Reduz o padding interno dos cards do formulário em telas pequenas */
+  .cabecalho p {
+    font-size: 0.8rem;
+  }
+
+  .secao .card-header {
+    padding: 1rem !important;
+    gap: 0.5rem;
+  }
+
+  .secao .card-header h2 {
+    font-size: 0.95rem;
+  }
+
   .secao .card-body {
     padding: 1rem !important;
   }
 
-  /* Organiza os botões de navegação do formulário empilhados para facilitar o toque */
+  .form-label {
+    font-size: 0.85rem;
+  }
+
   .wizard-footer-actions {
     padding: 0.8rem 1rem;
-    flex-direction: column-reverse;
-    gap: 0.6rem;
   }
 
-  .wizard-footer-actions button,
   .wizard-footer-actions .d-flex {
-    width: 100% !important;
+    width: 100%;
   }
 
-  .wizard-footer-actions .d-flex button {
-    width: 50% !important;
+  .wizard-footer-actions button {
+    flex: 1;
+  }
+
+  footer {
+    font-size: 0.7rem;
+    padding: 1rem 0.5rem;
+  }
+}
+
+
+/* CELULARES MUITO PEQUENOS */
+@media (max-width: 400px) {
+
+  .cabecalho-conteudo {
+    gap: 0.5rem;
+  }
+
+  .cabecalho img {
+    max-height: 35px;
+  }
+
+  .cabecalho h1 {
+    font-size: 1rem !important;
+  }
+
+  .secao .card-header h2 {
+    font-size: 0.85rem;
+  }
+
+  .secao .card-header .badge {
+    font-size: 0.65rem;
   }
 }

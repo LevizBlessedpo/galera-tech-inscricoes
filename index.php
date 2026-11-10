@@ -14,17 +14,18 @@
 </head>
 
 <body>
+
   <header class="cabecalho">
     <div class="container" style="max-width:850px">
       <!-- Div flexível para alinhar a logo e os textos lado a lado -->
       <div class="d-flex align-items-center gap-3">
-        <img src="img/galera_tech_logo.png" alt="Logo Galera Tech" style="height: 55px; width: auto; object-fit: contain;">
+        <img src="img/galera_tech_logo.png" alt="Logo Galera Tech" style="height: 300px; width: auto; object-fit: contain;">
         <div>
-          <div class="small text-uppercase fw-bold opacity-75 mb-1">Programa de estudos • Inscrição</div>
           <h1 class="h3 fw-bold mb-0">Galera Tech — Formulário de Inscrição</h1>
+          <p class="mb-0 opacity-75 small mt-2">Preencha seus dados para realizar sua inscrição.</p>
         </div>
       </div>
-      <p class="mb-0 opacity-75 small mt-2">Preencha seus dados para realizar sua inscrição.</p>
+
     </div>
   </header>
 
