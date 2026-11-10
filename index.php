@@ -288,7 +288,7 @@
     </div>
 
     <footer>
-      Ficha de Inscrição Galera Tech • PHP, MySQL e Bootstrap
+      Galera Tech — Programa de estudos em tecnologia • todos os direitos reservados &copy; • Desenvolvido por <a href="https://www.linkedin.com/in/levi-santos-da-cruz-9a998533a/" target="_blank" rel="noopener noreferrer">Levi S. da Cruz</a>
     </footer>
   </main>
 
