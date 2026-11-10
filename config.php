@@ -1,3 +1,4 @@
+
 <?php
 
 // ==========================================================
@@ -6,7 +7,7 @@
 
 // Define o endereço do servidor onde o MySQL está instalado.
 // 127.0.0.1 indica que o banco está no próprio computador.
-const DB_HOST = '127.0.0.1';
+const DB_HOST = '127.0.0.1'; // ou localhost - ou host online
 
 // Define o nome do banco de dados que será utilizado.
 const DB_NAME = 'galera_tech';
@@ -18,7 +19,7 @@ const DB_USER = 'root';
 // Define a senha de acesso ao banco de dados.
 // No Laragon, em instalações locais, pode estar vazia.
 // Em produção, utilize credenciais seguras.
-const DB_PASS = '';
+const DB_PASS = 'root';
 
 // Define o ano em que as inscrições serão realizadas.
 const ANO_INSCRICAO = 2027;
@@ -56,7 +57,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 // ==========================================================
 
 // Declara a função db(), que retorna uma conexão PDO.
-function db(): PDO {
+function db(): PDO
+{
 
     // Cria uma variável estática para armazenar a conexão.
     // Ela mantém seu valor entre chamadas da função.
@@ -70,7 +72,7 @@ function db(): PDO {
 
             // Monta a string de conexão com MySQL.
             // Informa servidor, banco de dados e codificação.
-            'mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8mb4',
+            'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4',
 
             // Informa o usuário do banco de dados.
             DB_USER,
@@ -106,7 +108,8 @@ function db(): PDO {
 // ==========================================================
 
 // Recebe um texto e retorna uma versão segura para HTML.
-function e(?string $v): string {
+function e(?string $v): string
+{
 
     // Converte caracteres especiais em entidades HTML.
     // ENT_QUOTES converte aspas simples e duplas.
@@ -125,7 +128,8 @@ function e(?string $v): string {
 // ==========================================================
 
 // Declara uma função que retorna um token de segurança.
-function token(): string {
+function token(): string
+{
 
     // Verifica se ainda não existe um token na sessão.
     if (empty($_SESSION['csrf'])) {
@@ -146,7 +150,8 @@ function token(): string {
 // ==========================================================
 
 // Verifica se o formulário enviou um token válido.
-function verify_token(): void {
+function verify_token(): void
+{
 
     // Verifica se o token não foi enviado OU se é diferente
     // do token armazenado na sessão.
@@ -169,7 +174,8 @@ function verify_token(): void {
 // ==========================================================
 
 // Verifica se existe um administrador autenticado.
-function auth(): void {
+function auth(): void
+{
 
     // Consulta o identificador do administrador na sessão.
     if (empty($_SESSION['admin_id'])) {
@@ -188,7 +194,8 @@ function auth(): void {
 // ==========================================================
 
 // Recebe um texto e retorna somente os dígitos.
-function digits(string $v): string {
+function digits(string $v): string
+{
 
     // \D representa qualquer caractere que não seja dígito.
     // O sinal + identifica um ou mais caracteres consecutivos.
@@ -202,7 +209,8 @@ function digits(string $v): string {
 // ==========================================================
 
 // Recebe um CPF e retorna true (válido) ou false (inválido).
-function cpf_ok(string $v): bool {
+function cpf_ok(string $v): bool
+{
 
     // Remove pontos, traços, espaços e outros caracteres.
     $v = digits($v);
