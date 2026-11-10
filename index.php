@@ -294,6 +294,7 @@
 
   <script src="assets/validacoes.js"></script>
   <script src="assets/formulario.js"></script>
+  <script src="assets/cep.js"></script>
 </body>
 
 </html>
