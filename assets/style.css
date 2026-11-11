@@ -1,22 +1,27 @@
 /* ==========================================================
-   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (BASE)
+   1. PALETA DE CORES OFICIAIS GALERA TECH (CORES DO SITE)
    ========================================================== */
 :root {
-  --azul-principal: #174a86;
-  --azul-escuro: #122f60;
-  --fundo-pagina: #0b1329;
-  --cinza-borda: #dce3ec;
-  --texto-principal: #2c3e50;
+  --azul-escuro-galera: #0b1d3a;
+  --azul-institucional: #174a86;
+  --azul-hover: #1e5bb0;
+  --ciano-galera: #00b4d8;
+  --fundo-pagina: #091428;
+  --cinza-borda: #e2e8f0;
+  --texto-escuro: #1e293b;
+  --texto-mutado: #64748b;
 }
 
 body {
   background-color: var(--fundo-pagina);
-  background-image: linear-gradient(135deg, rgba(11, 19, 41, 0.88), rgba(23, 74, 134, 0.92)), url('../img/fundo.png');
+  background-image: radial-gradient(circle at 50% 0%, rgba(0, 180, 216, 0.12), transparent 70%),
+                    linear-gradient(135deg, rgba(9, 20, 40, 0.95), rgba(11, 29, 58, 0.98)),
+                    url('../img/fundo.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: var(--texto-principal);
-  font-family: "Inter", system-ui, sans-serif;
+  color: var(--texto-escuro);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,97 +30,185 @@ body {
 }
 
 /* ==========================================================
-   2. CABEÇALHO E RODAPÉ PADRÃO
+   2. CABEÇALHO FIXO (STICKY HEADER COM POSITION FIXED/STICKY)
    ========================================================== */
-
-
-.cabecalho {
-  background: transparent;
-  color: #fff;
-  padding: 2rem 0 1rem 0;
-  text-align: center;
-}
-
 header.cabecalho {
-  background: linear-gradient(110deg, #122f60, #2463a5) !important;
-  color: #ffffff !important;
-  padding: 2rem 0 1.5rem 0;
-  text-align: center;
-  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: rgba(11, 29, 58, 0.92) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 0.85rem 0;
+  transition: all 0.3s ease;
 }
 
-.cabecalho h1,
-.cabecalho h3 {
+.cabecalho-logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.cabecalho-titulo {
+  color: #ffffff;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-footer {
-  color: #94a3b8;
-  font-size: 0.8rem;
-  text-align: center;
-  padding: 1rem 0;
+.cabecalho-subtitulo {
+  color: var(--ciano-galera);
+  font-weight: 500;
 }
 
 /* ==========================================================
-   3. ESTILIZAÇÃO DO WIZARD DE INSCRIÇÃO (INDEX.PHP)
+   3. CONTAINER PRINCIPAL E CARD DO FORMULÁRIO
    ========================================================== */
 main.container {
-  max-width: 850px !important;
+  max-width: 860px !important;
   margin: 0 auto;
   flex: 1;
-  padding-bottom: 2rem;
-  padding-top: 0.5rom !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 2rem !important;
 }
 
 .wizard-wrapper {
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   overflow: hidden;
 }
 
-/* Abas de Navegação Superior do Formulário */
+/* Alert Informativo sobre o Programa */
+.alert-info-custom {
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid var(--ciano-galera);
+  color: var(--azul-escuro-galera);
+  border-radius: 10px;
+}
+
+/* Toast de Sucesso Dinâmico e Animado */
+#mensagemSucesso {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 1060;
+  min-width: 320px;
+  max-width: 450px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  animation: slideInDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Abas de Navegação (Wizard Tabs) */
+/* ==========================================================
+   CORREÇÃO DAS ABAS DO WIZARD (FIM DO SCROLL CINZA)
+   ========================================================== */
 .wizard-header-tabs {
   display: flex;
   background: #f8fafc;
   border-bottom: 1px solid var(--cinza-borda);
-  overflow: hidden;
+  overflow-x: hidden; /* Remove completamente a barra de rolagem cinza indesejada */
   width: 100%;
 }
 
 .wizard-tab {
   flex: 1;
-  padding: 0.9rem 0.4rem;
+  padding: 0.85rem 0.2rem;
   text-align: center;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--texto-mutado);
   background: transparent;
   border: none;
-  cursor: pointer;
   border-bottom: 3px solid transparent;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .wizard-tab.active {
-  color: var(--azul-principal);
+  color: var(--azul-institucional);
   background: #ffffff;
-  border-bottom-color: var(--azul-principal);
+  border-bottom-color: var(--ciano-galera);
   font-weight: 700;
 }
 
-.wizard-tab .tab-indicator {
-  display: none;
+/* ==========================================================
+   BOTÕES MODERNOS E ELEGANTES (VOLTAR, CONTINUAR, LIMPAR)
+   ========================================================== */
+.btn-primary, 
+.btn-wizard-next {
+  background: linear-gradient(135deg, var(--azul-institucional), var(--azul-escuro-galera));
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(23, 74, 134, 0.25);
+  transition: all 0.25s ease;
 }
 
-/* Seções do Formulário em Abas */
+.btn-primary:hover, 
+.btn-wizard-next:hover {
+  background: linear-gradient(135deg, var(--azul-hover), var(--azul-institucional));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(23, 74, 134, 0.35);
+  color: #ffffff;
+}
+
+.btn-wizard-prev {
+  background: #e2e8f0;
+  color: #334155;
+  border: none;
+  padding: 0.65rem 1.3rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.btn-wizard-prev:hover {
+  background: #cbd5e1;
+  color: #1e293b;
+}
+
+.btn-outline-secondary {
+  border: 1.5px solid #cbd5e1;
+  color: #475569;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.65rem 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #94a3b8;
+}
+
+/* Seções e Cards do Form */
 .secao {
   display: none;
   border: none !important;
   box-shadow: none !important;
-  margin-bottom: 0 !important;
   border-radius: 0 !important;
 }
 
@@ -129,234 +222,97 @@ main.container {
   padding: 1.25rem 1.5rem !important;
 }
 
-.cabecalho img {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-  max-height: 50px;
-  width: auto;
-}
-
-.cabecalho {
-  background: transparent;
-  color: #fff;
-  padding: 2.5rem 1rem 1rem 1rem;
-  text-align: center;
-}
-
-.secao .card-body {
-  padding: 1.5rem !important;
-}
-
-.card-header h2 {
-  color: var(--azul-escuro);
+.secao .card-header h2 {
+  color: var(--azul-escuro-galera);
   font-weight: 700;
-  font-size: 1.1rem;
-}
-
-/* Elementos e Inputs do Formulário */
-.form-label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #334155;
-}
-
-.obrigatorio {
-  color: #dc2626;
-}
-
-.form-control,
-.form-select {
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  border: 1px solid var(--cinza-borda);
-  background-color: #fff;
-  font-size: 0.95rem;
-}
-
-.form-control:focus,
-.form-select:focus {
-  border-color: var(--azul-principal);
-  box-shadow: 0 0 0 0.2rem rgba(23, 74, 134, 0.15);
+  font-size: 1.15rem;
 }
 
 .numero {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background: #e2e8f0;
-  color: var(--azul-escuro);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--azul-institucional);
   font-weight: 700;
-  font-size: 0.85rem;
-  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  margin-right: 0.6rem;
 }
 
-/* Botões do Wizard */
+/* Inputs e Botões */
+.form-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.obrigatorio {
+  color: #e11d48;
+}
+
+.form-control,
+.form-select {
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--cinza-borda);
+  font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ciano-galera);
+  box-shadow: 0 0 0 0.25rem rgba(0, 180, 216, 0.2);
+}
+
+.btn-primary {
+  background-color: var(--azul-institucional);
+  border-color: var(--azul-institucional);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: var(--azul-hover);
+  border-color: var(--azul-hover);
+}
+
 .wizard-footer-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   background: #f8fafc;
   border-top: 1px solid var(--cinza-borda);
 }
 
-.btn-wizard-prev {
-  background: #e2e8f0;
-  color: #475569;
-  border: none;
-  padding: 0.55rem 1.1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+footer {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 1.5rem 0 1rem;
 }
 
-.btn-wizard-prev:hover {
-  background: #cbd5e1;
+footer a {
+  color: var(--ciano-galera);
+  text-decoration: none;
 }
 
-.btn-wizard-next,
-.btn-primary {
-  background: var(--azul-principal);
-  color: #fff;
-  border: none;
-  padding: 0.55rem 1.3rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+footer a:hover {
+  text-decoration: underline;
 }
 
-.btn-wizard-next:hover,
-.btn-primary:hover {
-  background: var(--azul-escuro);
-}
-
-/* ==========================================================
-   4. ESTILIZAÇÃO DO PAINEL ADMINISTRATIVO E LOGIN
-   ========================================================== */
-.admin-card {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--cinza-borda);
-}
-
-
-/* ==========================================================
-   5. RESPONSIVIDADE
-   ========================================================== */
-
-/* COMPUTADORES E TELAS MAIORES */
-@media (min-width: 769px) {
-
-  main.container {
-    max-width: 850px !important;
-    padding-top: 1rem !important;
-  }
-
-  .cabecalho {
-    padding: 2rem 1rem 1.5rem;
-  }
-
-  .cabecalho h1 {
-    font-size: 1.75rem;
-  }
-
-  .secao .card-body {
-    padding: 1.5rem !important;
-  }
-}
-
-
-/* CELULARES E TELAS MENORES */
+/* Responsividade Mobile */
 @media (max-width: 768px) {
-
-  body {
-    background-attachment: scroll;
+  .cabecalho-logo-img {
+    height: 38px;
   }
-
-  main.container {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+  .cabecalho-titulo {
+    font-size: 1.05rem !important;
   }
-
-  .cabecalho {
-    padding: 1.5rem 0.75rem 1rem;
-  }
-
-  .cabecalho-conteudo {
-    gap: 0.75rem;
-  }
-
-  .cabecalho img {
-    max-height: 42px;
-  }
-
-  .cabecalho h1 {
-    font-size: 1.2rem !important;
-  }
-
-  .cabecalho p {
-    font-size: 0.8rem;
-  }
-
-  .secao .card-header {
-    padding: 1rem !important;
-    gap: 0.5rem;
-  }
-
-  .secao .card-header h2 {
-    font-size: 0.95rem;
-  }
-
-  .secao .card-body {
-    padding: 1rem !important;
-  }
-
-  .form-label {
-    font-size: 0.85rem;
-  }
-
-  .wizard-footer-actions {
-    padding: 0.8rem 1rem;
-  }
-
-  .wizard-footer-actions .d-flex {
-    width: 100%;
-  }
-
-  .wizard-footer-actions button {
-    flex: 1;
-  }
-
-  footer {
-    font-size: 0.7rem;
-    padding: 1rem 0.5rem;
-  }
-}
-
-
-/* CELULARES MUITO PEQUENOS */
-@media (max-width: 400px) {
-
-  .cabecalho-conteudo {
-    gap: 0.5rem;
-  }
-
-  .cabecalho img {
-    max-height: 35px;
-  }
-
-  .cabecalho h1 {
-    font-size: 1rem !important;
-  }
-
-  .secao .card-header h2 {
-    font-size: 0.85rem;
-  }
-
-  .secao .card-header .badge {
-    font-size: 0.65rem;
+  .cabecalho-subtitulo {
+    font-size: 0.75rem !important;
   }
 }
