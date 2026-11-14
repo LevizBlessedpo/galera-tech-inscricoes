@@ -153,3 +153,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Inicializa na primeira etapa
   showStep(0);
 });
+

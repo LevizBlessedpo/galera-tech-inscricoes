@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const STORAGE_KEY = "galera_tech_inscricao_draft";
     const STEP_KEY = "galera_tech_inscricao_step";
 
-    // 1. Recuperar dados salvos nos campos
+    // 1. Recuperar dados salvos nos campos (rascunho)
     const savedData = localStorage.getItem(STORAGE_KEY);
     if (savedData) {
         try {
@@ -25,46 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // 2. Destrancar todas as abas do Wizard para navegação livre
+    // 2. Sempre inicia na Etapa 1 ao carregar/atualizar a página (evita pular para a última ou travar)
+    localStorage.removeItem(STEP_KEY);
+
     const tabs = document.querySelectorAll(".wizard-tab");
     const secoes = document.querySelectorAll(".secao");
 
-    tabs.forEach(tab => {
-        tab.removeAttribute("disabled");
-        tab.style.pointerEvents = "auto";
-        tab.style.opacity = "1";
-    });
-
-    // 3. Restaurar exatamente a etapa (step) em que o utilizador estava antes de abrir a privacidade
-    const savedStep = localStorage.getItem(STEP_KEY);
-    if (savedStep !== null && tabs[savedStep] && secoes[savedStep]) {
-        const targetIndex = parseInt(savedStep, 10);
-        
-        tabs.forEach((t, i) => t.classList.toggle("active", i === targetIndex));
-        secoes.forEach((s, i) => s.classList.toggle("step-active", i === targetIndex));
+    if (tabs.length > 0 && secoes.length > 0) {
+        tabs.forEach((t, i) => t.classList.toggle("active", i === 0));
+        secoes.forEach((s, i) => s.classList.toggle("step-active", i === 0));
     }
 
-    // 4. Guardar a etapa atual sempre que o utilizador clicar numa aba
-    tabs.forEach((tab, index) => {
-        tab.addEventListener("click", function () {
-            localStorage.setItem(STEP_KEY, index);
-        });
-    });
-
-    // Guardar etapa ao clicar nos botões de avançar/voltar
-    document.querySelectorAll(".btn-proximo, .btn-wizard-next, .btn-voltar, .btn-wizard-prev").forEach(btn => {
-        btn.addEventListener("click", function () {
-            setTimeout(() => {
-                tabs.forEach((tab, index) => {
-                    if (tab.classList.contains("active")) {
-                        localStorage.setItem(STEP_KEY, index);
-                    }
-                });
-            }, 100);
-        });
-    });
-
-    // 5. Salvar automaticamente no LocalStorage sempre que o utilizador digitar algo
+    // 3. Salvar automaticamente no LocalStorage sempre que o utilizador digitar algo
     form.addEventListener("input", function () {
         const formData = new FormData(form);
         const dataObj = {};
@@ -74,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObj));
     });
 
-    // 6. Botão de Limpar (Reseta campos, limpa cache e volta para a Etapa 1)
+    // 4. Botão de Limpar (Reseta campos, limpa cache e volta para a Etapa 1 com tudo limpo)
     const btnReset = form.querySelector('button[type="reset"]');
     if (btnReset) {
         btnReset.addEventListener("click", function (e) {
@@ -83,12 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem(STEP_KEY);
             
-            tabs.forEach((t, i) => t.classList.toggle("active", i === 0));
-            secoes.forEach((s, i) => s.classList.toggle("step-active", i === 0));
+            if (tabs.length > 0 && secoes.length > 0) {
+                tabs.forEach((t, i) => t.classList.toggle("active", i === 0));
+                secoes.forEach((s, i) => s.classList.toggle("step-active", i === 0));
+            }
         });
     }
 
-    // 7. Limpar o cache ao enviar a inscrição com sucesso
+    // 5. Limpar o cache ao enviar a inscrição com sucesso
     form.addEventListener("submit", function () {
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(STEP_KEY);

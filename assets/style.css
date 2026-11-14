@@ -14,14 +14,19 @@
 
 body {
   background-color: var(--fundo-pagina);
-  background-image: radial-gradient(circle at 50% 0%, rgba(0, 180, 216, 0.12), transparent 70%),
-                    linear-gradient(135deg, rgba(9, 20, 40, 0.95), rgba(11, 29, 58, 0.98)),
-                    url('../img/fundo.png');
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(0, 180, 216, 0.12), transparent 70%),
+    linear-gradient(135deg, rgba(9, 20, 40, 0.95), rgba(11, 29, 58, 0.98)),
+    url("../img/fundo.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: var(--texto-escuro);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -115,9 +120,6 @@ main.container {
 }
 
 /* Abas de Navegação (Wizard Tabs) */
-/* ==========================================================
-   CORREÇÃO DAS ABAS DO WIZARD (FIM DO SCROLL CINZA)
-   ========================================================== */
 .wizard-header-tabs {
   display: flex;
   background: #f8fafc;
@@ -152,9 +154,13 @@ main.container {
 /* ==========================================================
    BOTÕES MODERNOS E ELEGANTES (VOLTAR, CONTINUAR, LIMPAR)
    ========================================================== */
-.btn-primary, 
+.btn-primary,
 .btn-wizard-next {
-  background: linear-gradient(135deg, var(--azul-institucional), var(--azul-escuro-galera));
+  background: linear-gradient(
+    135deg,
+    var(--azul-institucional),
+    var(--azul-escuro-galera)
+  );
   color: #ffffff;
   border: none;
   padding: 0.65rem 1.5rem;
@@ -165,9 +171,13 @@ main.container {
   transition: all 0.25s ease;
 }
 
-.btn-primary:hover, 
+.btn-primary:hover,
 .btn-wizard-next:hover {
-  background: linear-gradient(135deg, var(--azul-hover), var(--azul-institucional));
+  background: linear-gradient(
+    135deg,
+    var(--azul-hover),
+    var(--azul-institucional)
+  );
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(23, 74, 134, 0.35);
   color: #ffffff;
@@ -315,4 +325,67 @@ footer a:hover {
   .cabecalho-subtitulo {
     font-size: 0.75rem !important;
   }
+}
+
+/* =========================================
+   BOTÃO DE TEMA (SLIDE SWITCH EXATO)
+   ========================================= */
+button.theme-switch {
+  position: relative !important;
+  width: 60px !important;
+  height: 30px !important;
+  background-color: #1e293b !important;
+  border: 1px solid #7c3aed !important; /* Borda roxa elegante igual à referência */
+  border-radius: 9999px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 4px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+
+button.theme-switch .icon-moon .icon-sun {
+  font-size: 14px !important;
+  line-height: 1 !important;
+  user-select: none !important;
+  z-index: 1 !important;
+  margin-left: 2px;
+}
+
+/* O círculo deslizante (bolinha) */
+button.theme-switch .switch-thumb {
+  position: absolute !important;
+  top: 3px !important;
+  left: 3px !important;
+  width: 22px !important;
+  height: 22px !important;
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 2 !important;
+}
+
+/* --- QUANDO O MODO CLARO ESTIVER ATIVADO --- */
+body.light-mode {
+  background-color: #f1f5f9 !important;
+  background-image: none !important;
+}
+
+body.light-mode button.theme-switch {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode button.theme-switch .switch-thumb {
+  transform: translateX(30px) !important; /* Desloca a bolinha para a direita */
+  background-color: #f59e0b !important; /* Transforma a bolinha em um sol amarelo ao mover */
+}
+
+body.light-mode .wizard-wrapper {
+  background: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1) !important;
+  border: 1px solid #cbd5e1 !important;
 }

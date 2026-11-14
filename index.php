@@ -15,7 +15,7 @@
 
 <body>
 
-  <!-- HEADER FIXO (STICKY TOP) COM LOGO NA ESQUERDA E TEXTO CENTRALIZADO -->
+  <!-- HEADER FIXO -->
   <header class="cabecalho sticky-top">
     <div class="container-fluid px-3 px-md-4">
       <div class="row align-items-center">
@@ -23,13 +23,21 @@
         <div class="col-auto col-md-3 text-start">
           <img src="img/galera_tech_logo.png" alt="Galera Tech" class="cabecalho-logo-img">
         </div>
-        <!-- Centro: Título do Formulário alinhado no meio do container -->
-        <div class="col text-center me-auto">
+
+        <!-- Centro: Título -->
+        <div class="col text-center">
           <h1 class="h4 mb-0 cabecalho-titulo">Galera Tech — Formulário de Inscrição</h1>
           <p class="mb-0 small cabecalho-subtitulo">Preencha seus dados para realizar sua inscrição</p>
         </div>
-        <!-- Direita: Espaçador para balanço no Desktop -->
-        <div class="col-md-3 d-none d-md-block"></div>
+
+        <!-- Direita: Botão de Tema -->
+        <div class="col-auto col-md-3 d-flex justify-content-end">
+          <button id="btnTemaToggle" class="theme-switch" type="button" aria-label="Alternar tema">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon" style="margin-left: 9px;">🌙</span>
+            <div class="switch-thumb"></div>
+          </button>
+        </div>
       </div>
     </div>
   </header>
@@ -38,12 +46,6 @@
     <!-- Aviso Institucional -->
     <div class="alert alert-info-custom shadow-sm mb-3" role="note">
       <strong>Sobre o Galera Tech:</strong> capacitação gratuita em tecnologia, com aulas presenciais à tarde, <strong>exclusiva para estudantes do Ensino Médio de escolas públicas</strong>. Antes de se inscrever, leia as condições do programa e confirme sua ciência na seção final.
-    </div>
-
-    <!-- Toast de Sucesso Dinâmico -->
-    <div id="mensagemSucesso" class="alert alert-success alert-dismissible fade show d-none" role="alert">
-      <strong>Inscrição enviada!</strong> Seus dados foram salvos com sucesso no sistema.
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
     <div class="wizard-wrapper">
@@ -152,7 +154,33 @@
                 <label for="estado" class="form-label">Estado (UF) <span class="obrigatorio">*</span></label>
                 <select class="form-select" id="estado" name="estado" required>
                   <option value="">Selecione</option>
-                  <option value="AC">Acre (AC)</option><option value="AL">Alagoas (AL)</option><option value="AP">Amapá (AP)</option><option value="AM">Amazonas (AM)</option><option value="BA">Bahia (BA)</option><option value="CE">Ceará (CE)</option><option value="DF">Distrito Federal (DF)</option><option value="ES">Espírito Santo (ES)</option><option value="GO">Goiás (GO)</option><option value="MA">Maranhão (MA)</option><option value="MT">Mato Grosso (MT)</option><option value="MS">Mato Grosso do Sul (MS)</option><option value="MG">Minas Gerais (MG)</option><option value="PA">Pará (PA)</option><option value="PB">Paraíba (PB)</option><option value="PR">Paraná (PR)</option><option value="PE">Pernambuco (PE)</option><option value="PI">Piauí (PI)</option><option value="RJ">Rio de Janeiro (RJ)</option><option value="RN">Rio Grande do Norte (RN)</option><option value="RS">Rio Grande do Sul (RS)</option><option value="RO">Rondônia (RO)</option><option value="RR">Roraima (RR)</option><option value="SC">Santa Catarina (SC)</option><option value="SP">São Paulo (SP)</option><option value="SE">Sergipe (SE)</option><option value="TO">Tocantins (TO)</option>
+                  <option value="AC">Acre (AC)</option>
+                  <option value="AL">Alagoas (AL)</option>
+                  <option value="AP">Amapá (AP)</option>
+                  <option value="AM">Amazonas (AM)</option>
+                  <option value="BA">Bahia (BA)</option>
+                  <option value="CE">Ceará (CE)</option>
+                  <option value="DF">Distrito Federal (DF)</option>
+                  <option value="ES">Espírito Santo (ES)</option>
+                  <option value="GO">Goiás (GO)</option>
+                  <option value="MA">Maranhão (MA)</option>
+                  <option value="MT">Mato Grosso (MT)</option>
+                  <option value="MS">Mato Grosso do Sul (MS)</option>
+                  <option value="MG">Minas Gerais (MG)</option>
+                  <option value="PA">Pará (PA)</option>
+                  <option value="PB">Paraíba (PB)</option>
+                  <option value="PR">Paraná (PR)</option>
+                  <option value="PE">Pernambuco (PE)</option>
+                  <option value="PI">Piauí (PI)</option>
+                  <option value="RJ">Rio de Janeiro (RJ)</option>
+                  <option value="RN">Rio Grande do Norte (RN)</option>
+                  <option value="RS">Rio Grande do Sul (RS)</option>
+                  <option value="RO">Rondônia (RO)</option>
+                  <option value="RR">Roraima (RR)</option>
+                  <option value="SC">Santa Catarina (SC)</option>
+                  <option value="SP">São Paulo (SP)</option>
+                  <option value="SE">Sergipe (SE)</option>
+                  <option value="TO">Tocantins (TO)</option>
                 </select>
                 <div class="invalid-feedback">Selecione o estado.</div>
               </div>
@@ -261,11 +289,11 @@
             </div>
             <p class="small text-secondary">* Campos obrigatórios. O aviso de privacidade está disponível no link acima; o texto é uma minuta que deverá ser revisada pela organização antes de receber dados reais.</p>
           </div>
-          <div class="wizard-footer-actions">
-            <div class="d-flex gap-2 w-100 justify-content-end">
-              <button type="reset" class="btn btn-outline-secondary px-3">Limpar</button>
-              <button type="submit" class="btn btn-primary px-4 fw-semibold">Enviar inscrição</button>
-            </div>
+
+          <!-- ADICIONE ESTE BLOCO ABAIXO PARA OS BOTÕES APARECEREM -->
+          <div class="acoes-form">
+            <button type="reset" class="btn btn-outline-secondary px-3">Limpar</button>
+            <button type="submit" class="btn btn-primary px-4 fw-semibold">Enviar inscrição</button>
           </div>
         </section>
 
@@ -276,13 +304,14 @@
       Galera Tech — Programa de estudos em tecnologia • todos os direitos reservados &copy; • Desenvolvido por <a href="https://www.linkedin.com/in/levi-santos-da-cruz-9a998533a/" target="_blank" rel="noopener noreferrer">Levi S. da Cruz</a>
     </footer>
   </main>
-  
-  <!-- Scripts do formulário e validações -->
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/validacoes.js"></script>
   <script src="assets/formulario.js"></script>
   <script src="assets/cep.js"></script>
   <script src="assets/localStorage.js"></script>
+  <script src="assets/tema.js"></script>
 </body>
 
 </html>
