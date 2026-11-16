@@ -19,7 +19,7 @@ const DB_USER = 'root';
 // Define a senha de acesso ao banco de dados.
 // No Laragon, em instalações locais, pode estar vazia.
 // Em produção, utilize credenciais seguras.
-const DB_PASS = 'root';
+const DB_PASS = '';
 
 // Define o ano em que as inscrições serão realizadas.
 const ANO_INSCRICAO = 2027;

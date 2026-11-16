@@ -103,7 +103,7 @@ function validarCamposExtras() {
 }
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  sucesso.classList.add("d-none");
+  sucesso?.classList.add("d-none");
   atualizarResponsavel();
   validarCamposExtras();
   form.classList.add("was-validated");
@@ -117,12 +117,12 @@ form.addEventListener("submit", (e) => {
 form.querySelectorAll("input,select").forEach((el) =>
   el.addEventListener("input", () => {
     el.setCustomValidity("");
-    sucesso.classList.add("d-none");
+    sucesso?.classList.add("d-none");
   }),
 );
 form.addEventListener("reset", () => {
   form.classList.remove("was-validated");
-  sucesso.classList.add("d-none");
+  sucesso?.classList.add("d-none");
   setTimeout(atualizarResponsavel, 0);
 });
 atualizarResponsavel();
