@@ -23,14 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerTabs = document.createElement("div");
   headerTabs.className = "wizard-header-tabs";
 
-  let currentStep = 0;
-  // Controla qual foi a maior etapa alcançada/liberada pelo usuário
-  let maxReachedStep = 0;
+  const STEP_KEY = "galera_tech_inscricao_step";
+  const savedStep = parseInt(localStorage.getItem(STEP_KEY) || "0", 10);
+
+  let currentStep = savedStep >= 0 && savedStep < sections.length ? savedStep : 0;
+  let maxReachedStep = currentStep;
 
   stepTitles.forEach((title, index) => {
     const tab = document.createElement("button");
     tab.type = "button";
-    tab.className = `wizard-tab ${index === 0 ? "active" : ""}`;
+    tab.className = `wizard-tab ${index === currentStep ? "active" : ""}`;
     tab.innerHTML = `${title}<div class="tab-indicator"></div>`;
 
     tab.addEventListener("click", () => {
@@ -72,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     currentStep = stepIndex;
+    localStorage.setItem(STEP_KEY, currentStep); // Salva a etapa atual no navegador
     updateTabsUI();
     window.scrollTo({ top: wrapper.offsetTop - 40, behavior: "smooth" });
   }

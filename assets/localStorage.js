@@ -20,33 +20,33 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
+            // Atualiza a regra de maior/menor de idade caso a data tenha sido restaurada
+            if (typeof atualizarResponsavel === "function") {
+                atualizarResponsavel();
+            }
         } catch (e) {
             console.error("Erro ao carregar rascunho:", e);
         }
     }
 
-    // 2. Sempre inicia na Etapa 1 ao carregar/atualizar a página (evita pular para a última ou travar)
-    localStorage.removeItem(STEP_KEY);
-
-    const tabs = document.querySelectorAll(".wizard-tab");
-    const secoes = document.querySelectorAll(".secao");
-
-    if (tabs.length > 0 && secoes.length > 0) {
-        tabs.forEach((t, i) => t.classList.toggle("active", i === 0));
-        secoes.forEach((s, i) => s.classList.toggle("step-active", i === 0));
-    }
-
-    // 3. Salvar automaticamente no LocalStorage sempre que o utilizador digitar algo
-    form.addEventListener("input", function () {
+    // 2. Salvar automaticamente no LocalStorage sempre que o usuário digitar ou marcar algo
+    const salvarRascunho = () => {
         const formData = new FormData(form);
         const dataObj = {};
         formData.forEach((value, key) => {
             if (key !== "csrf") dataObj[key] = value;
         });
+        // Garante que checkboxes desmarcados também sejam salvos corretamente
+        form.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            dataObj[cb.name] = cb.checked;
+        });
         localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObj));
-    });
+    };
 
-    // 4. Botão de Limpar (Reseta campos, limpa cache e volta para a Etapa 1 com tudo limpo)
+    form.addEventListener("input", salvarRascunho);
+    form.addEventListener("change", salvarRascunho);
+
+    // 3. Botão de Limpar (Reseta campos, limpa cache e recarrega na Etapa 1)
     const btnReset = form.querySelector('button[type="reset"]');
     if (btnReset) {
         btnReset.addEventListener("click", function (e) {
@@ -54,17 +54,15 @@ document.addEventListener("DOMContentLoaded", function () {
             form.reset();
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem(STEP_KEY);
-            
-            if (tabs.length > 0 && secoes.length > 0) {
-                tabs.forEach((t, i) => t.classList.toggle("active", i === 0));
-                secoes.forEach((s, i) => s.classList.toggle("step-active", i === 0));
-            }
+            window.location.reload();
         });
     }
 
-    // 5. Limpar o cache ao enviar a inscrição com sucesso
+    // 4. Limpar o cache ao enviar a inscrição com sucesso
     form.addEventListener("submit", function () {
-        localStorage.removeItem(STORAGE_KEY);
-        localStorage.removeItem(STEP_KEY);
+        if (form.checkValidity()) {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STEP_KEY);
+        }
     });
 });
