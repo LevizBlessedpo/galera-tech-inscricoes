@@ -1,32 +1,30 @@
-/* ==========================================================
-   1. PALETA DE CORES OFICIAIS GALERA TECH (CORES DO SITE)
-   ========================================================== */
+/* ========================================
+   1. PALETA DE CORES
+   ========================================*/
 :root {
-  --azul-escuro-galera: #0b1d3a;
-  --azul-institucional: #174a86;
+  --azul-escuro-galera: #07111e;
+  --preto-galera: #000000;
+  --azul-institucional: #0b1d3a;
   --azul-hover: #1e5bb0;
   --ciano-galera: #00b4d8;
-  --fundo-pagina: #091428;
+  --amarelo-galera: #ffcd38;
+  --fundo-pagina: #1d74e7;
   --cinza-borda: #e2e8f0;
+  --cabecalho-color: #ffffff;
   --texto-escuro: #1e293b;
   --texto-mutado: #64748b;
 }
 
 body {
-  background-color: var(--fundo-pagina);
+  background-color: var(--fundo-pagina) !important;
   background-image:
     radial-gradient(circle at 50% 0%, rgba(0, 180, 216, 0.12), transparent 70%),
-    linear-gradient(135deg, rgba(9, 20, 40, 0.95), rgba(11, 29, 58, 0.98)),
-    url("../img/fundo.png");
+    linear-gradient(135deg, rgb(9, 30, 59), rgb(7, 29, 57)) !important;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   color: var(--texto-escuro);
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,14 +32,14 @@ body {
   margin: 0;
 }
 
-/* ==========================================================
-   2. CABEÇALHO FIXO (STICKY HEADER COM POSITION FIXED/STICKY)
-   ========================================================== */
+/* ========================================
+   2. CABEÇALHO FIXO
+   ======================================== */
 header.cabecalho {
   position: sticky;
   top: 0;
   z-index: 1030;
-  background: rgba(11, 29, 58, 0.92) !important;
+  background: rgb(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 180, 216, 0.25);
@@ -51,7 +49,7 @@ header.cabecalho {
 }
 
 .cabecalho-logo-img {
-  height: 50px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
@@ -68,9 +66,9 @@ header.cabecalho {
   font-weight: 500;
 }
 
-/* ==========================================================
+/* ========================================
    3. CONTAINER PRINCIPAL E CARD DO FORMULÁRIO
-   ========================================================== */
+   ======================================== */
 main.container {
   max-width: 860px !important;
   margin: 0 auto;
@@ -87,7 +85,6 @@ main.container {
   overflow: hidden;
 }
 
-/* Alert Informativo sobre o Programa */
 .alert-info-custom {
   background: rgba(255, 255, 255, 0.95);
   border-left: 4px solid var(--ciano-galera);
@@ -95,28 +92,31 @@ main.container {
   border-radius: 10px;
 }
 
-/* Toast de Sucesso Dinâmico e Animado */
-#mensagemSucesso {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  z-index: 1060;
-  min-width: 320px;
-  max-width: 450px;
+/* Barra de Progresso com Informação e Cores */
+.wizard-progress-wrapper {
+  background: rgba(11, 29, 58, 0.75);
+  padding: 12px 16px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  animation: slideInDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  backdrop-filter: blur(10px);
 }
 
-@keyframes slideInDown {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.wizard-global-progress {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.wizard-progress-bar {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, #174a86, var(--ciano-galera));
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.8);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 9999px;
 }
 
 /* Abas de Navegação (Wizard Tabs) */
@@ -124,7 +124,7 @@ main.container {
   display: flex;
   background: #f8fafc;
   border-bottom: 1px solid var(--cinza-borda);
-  overflow-x: hidden; /* Remove completamente a barra de rolagem cinza indesejada */
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -151,36 +151,28 @@ main.container {
   font-weight: 700;
 }
 
-/* ==========================================================
-   BOTÕES MODERNOS E ELEGANTES (VOLTAR, CONTINUAR, LIMPAR)
-   ========================================================== */
+/* ===================
+   BOTÃO DE CONTINUAR
+   =================== */
 .btn-primary,
 .btn-wizard-next {
-  background: linear-gradient(
-    135deg,
-    var(--azul-institucional),
-    var(--azul-escuro-galera)
-  );
-  color: #ffffff;
-  border: none;
+  background-color: #38bdf8 !important;
+  color: #0f172a !important;
+  border: none !important;
   padding: 0.65rem 1.5rem;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  box-shadow: 0 4px 12px rgba(23, 74, 134, 0.25);
-  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .btn-primary:hover,
 .btn-wizard-next:hover {
-  background: linear-gradient(
-    135deg,
-    var(--azul-hover),
-    var(--azul-institucional)
-  );
+  background-color: #ffcd38 !important;
+  color: #0f172a !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(23, 74, 134, 0.35);
-  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(255, 205, 56, 0.35);
 }
 
 .btn-wizard-prev {
@@ -277,18 +269,6 @@ main.container {
   box-shadow: 0 0 0 0.25rem rgba(0, 180, 216, 0.2);
 }
 
-.btn-primary {
-  background-color: var(--azul-institucional);
-  border-color: var(--azul-institucional);
-  font-weight: 600;
-  border-radius: 8px;
-}
-
-.btn-primary:hover {
-  background-color: var(--azul-hover);
-  border-color: var(--azul-hover);
-}
-
 .wizard-footer-actions {
   display: flex;
   justify-content: space-between;
@@ -317,7 +297,7 @@ footer a:hover {
 /* Responsividade Mobile */
 @media (max-width: 768px) {
   .cabecalho-logo-img {
-    height: 38px;
+    height: 45px;
   }
   .cabecalho-titulo {
     font-size: 1.05rem !important;
@@ -328,14 +308,14 @@ footer a:hover {
 }
 
 /* =========================================
-   BOTÃO DE TEMA (SLIDE SWITCH EXATO)
+   BOTÃO DE TEMA (MODO CLARO E ESCURO)
    ========================================= */
 button.theme-switch {
   position: relative !important;
   width: 60px !important;
   height: 30px !important;
   background-color: #1e293b !important;
-  border: 1px solid #7c3aed !important; /* Borda roxa elegante igual à referência */
+  border: 1px solid #ffffff !important;
   border-radius: 9999px !important;
   display: flex !important;
   align-items: center !important;
@@ -346,15 +326,6 @@ button.theme-switch {
   transition: background-color 0.3s ease, border-color 0.3s ease !important;
 }
 
-button.theme-switch .icon-moon .icon-sun {
-  font-size: 14px !important;
-  line-height: 1 !important;
-  user-select: none !important;
-  z-index: 1 !important;
-  margin-left: 2px;
-}
-
-/* O círculo deslizante (bolinha) */
 button.theme-switch .switch-thumb {
   position: absolute !important;
   top: 3px !important;
@@ -368,7 +339,6 @@ button.theme-switch .switch-thumb {
   z-index: 2 !important;
 }
 
-/* --- QUANDO O MODO CLARO ESTIVER ATIVADO --- */
 body.light-mode {
   background-color: #f1f5f9 !important;
   background-image: none !important;
@@ -380,8 +350,8 @@ body.light-mode button.theme-switch {
 }
 
 body.light-mode button.theme-switch .switch-thumb {
-  transform: translateX(30px) !important; /* Desloca a bolinha para a direita */
-  background-color: #f59e0b !important; /* Transforma a bolinha em um sol amarelo ao mover */
+  transform: translateX(30px) !important;
+  background-color: #f59e0b !important;
 }
 
 body.light-mode .wizard-wrapper {

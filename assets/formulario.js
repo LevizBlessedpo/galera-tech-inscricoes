@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const STEP_KEY = "galera_tech_inscricao_step";
   const savedStep = parseInt(localStorage.getItem(STEP_KEY) || "0", 10);
 
-  let currentStep = savedStep >= 0 && savedStep < sections.length ? savedStep : 0;
+  let currentStep =
+    savedStep >= 0 && savedStep < sections.length ? savedStep : 0;
   let maxReachedStep = currentStep;
 
   stepTitles.forEach((title, index) => {
@@ -74,8 +75,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     currentStep = stepIndex;
-    localStorage.setItem(STEP_KEY, currentStep); // Salva a etapa atual no navegador
+    localStorage.setItem(STEP_KEY, currentStep);
     updateTabsUI();
+
+    // CALCULA A PORCENTAGEM E ATUALIZA A BARRA E O TEXTO NA TELA
+    const percentual = Math.round(((currentStep + 1) / sections.length) * 100);
+
+    const progressBar = document.getElementById("globalProgressBar");
+    if (progressBar) {
+      progressBar.style.width = `${percentual}%`;
+    }
+
+    const progressText = document.getElementById("progressText");
+    if (progressText) {
+      progressText.textContent = `Progresso da Inscrição: ${percentual}%`;
+    }
+
+    const progressStepText = document.getElementById("progressStepText");
+    if (progressStepText) {
+      progressStepText.textContent = `Etapa ${currentStep + 1} de ${sections.length}`;
+    }
+
     window.scrollTo({ top: wrapper.offsetTop - 40, behavior: "smooth" });
   }
 
@@ -155,5 +175,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Inicializa na primeira etapa
   showStep(0);
+  showStep(currentStep);
 });
-

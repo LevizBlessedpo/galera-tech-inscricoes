@@ -10,14 +10,12 @@
   <link rel="stylesheet" href="assets/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- HEADER FIXO -->
+  <!-- HEADER FIXO ORIGINAL & TÍTULO E BOTÃO DE TEMA -->
   <header class="cabecalho sticky-top">
     <div class="container-fluid px-3 px-md-4">
       <div class="row align-items-center">
@@ -28,8 +26,8 @@
 
         <!-- Centro: Título -->
         <div class="col text-center">
-          <h1 class="h4 mb-0 cabecalho-titulo">Galera Tech — Formulário de Inscrição</h1>
-          <p class="mb-0 small cabecalho-subtitulo">Preencha seus dados para realizar sua inscrição</p>
+          <h1 class="h4 mb-0 cabecalho-titulo text-dark">Galera Tech — Formulário de Inscrição</h1>
+          <p class="mb-0 small cabecalho-subtitulo text-muted">Preencha seus dados para realizar sua inscrição</p>
         </div>
 
         <!-- Direita: Botão de Tema -->
@@ -50,6 +48,17 @@
       <strong>Sobre o Galera Tech:</strong> capacitação gratuita em tecnologia, com aulas presenciais à tarde, <strong>exclusiva para estudantes do Ensino Médio de escolas públicas</strong>. Antes de se inscrever, leia as condições do programa e confirme sua ciência na seção final.
     </div>
 
+    <!-- BARRA DE PROGRESSO CUSTOMIZADA -->
+    <div class="wizard-progress-wrapper mb-3">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <span class="small fw-bold text-light" id="progressText">Progresso da Inscrição: 20%</span>
+        <span class="small fw-bold text-light" id="progressStepText">Etapa 1 de 5</span>
+      </div>
+      <div class="wizard-global-progress">
+        <div class="wizard-progress-bar" id="globalProgressBar"></div>
+      </div>
+    </div>
+
     <div class="wizard-wrapper">
       <form id="formInscricao" method="post" action="salvar_inscricao.php" novalidate>
         <input type="hidden" name="csrf" value="<?= e(token()) ?>">
@@ -58,7 +67,6 @@
         <section class="card secao step-active">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h2 class="h5 mb-0"><span class="numero">1</span>Dados pessoais do estudante</h2>
-            <span class="badge bg-light text-primary border fw-semibold">Etapa 1 de 5</span>
           </div>
           <div class="card-body">
             <div class="row g-3">
@@ -292,7 +300,7 @@
             <p class="small text-secondary">* Campos obrigatórios. O aviso de privacidade está disponível no link acima; o texto é uma minuta que deverá ser revisada pela organização antes de receber dados reais.</p>
           </div>
 
-          <!-- ADICIONE ESTE BLOCO ABAIXO PARA OS BOTÕES APARECEREM -->
+          <!-- Botões -->
           <div class="acoes-form">
             <button type="reset" class="btn btn-outline-secondary px-3">Limpar</button>
             <button type="submit" class="btn btn-primary px-4 fw-semibold">Enviar inscrição</button>
