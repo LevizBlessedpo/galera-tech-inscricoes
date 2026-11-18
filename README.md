@@ -57,11 +57,11 @@ Esta versão é uma demonstração. Use **somente dados fictícios** ao testar n
 
 ## 🚀 Próximos passos
 
-- [ ] Conectar o formulário ao PHP
-- [ ] Gravar as inscrições no MySQL com consultas preparadas
-- [ ] Repetir as validações no servidor
-- [ ] Criar a página de confirmação de inscrição enviada
-- [ ] Publicar o sistema
+- [x] Conectar o formulário ao PHP
+- [x] Gravar as inscrições no MySQL com consultas preparadas
+- [x] Repetir as validações no servidor
+- [x] Criar a página de confirmação de inscrição enviada
+- [x] Publicar o sistema
 
 ---
 
