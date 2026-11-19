@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const STORAGE_KEY = "galera_tech_inscricao_draft";
     const STEP_KEY = "galera_tech_inscricao_step";
+    const MAX_STEP_KEY = "galera_tech_inscricao_max_step";
 
     // 1. Recuperar dados salvos nos campos (rascunho)
     const savedData = localStorage.getItem(STORAGE_KEY);
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             form.reset();
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem(STEP_KEY);
+            localStorage.removeItem(MAX_STEP_KEY);
             window.location.reload();
         });
     }
@@ -63,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (form.checkValidity()) {
             localStorage.removeItem(STORAGE_KEY);
             localStorage.removeItem(STEP_KEY);
+            localStorage.removeItem(MAX_STEP_KEY);
         }
     });
 });

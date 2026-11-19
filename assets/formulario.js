@@ -1,4 +1,3 @@
-// Esse script transforma o formulário de inscrição em um wizard de múltiplas etapas, com validação de campos e navegação entre seções.
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("formInscricao");
   if (!form) return;
@@ -14,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "5. Termos",
   ];
 
-  // Cria o container do wrapper e o cabeçalho de abas no topo do form
   const wrapper = document.createElement("div");
   wrapper.className = "wizard-wrapper";
   form.parentNode.insertBefore(wrapper, form);
@@ -24,11 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
   headerTabs.className = "wizard-header-tabs";
 
   const STEP_KEY = "galera_tech_inscricao_step";
+  const MAX_STEP_KEY = "galera_tech_inscricao_max_step";
+
   const savedStep = parseInt(localStorage.getItem(STEP_KEY) || "0", 10);
+  const savedMaxStep = parseInt(localStorage.getItem(MAX_STEP_KEY) || "0", 10);
 
   let currentStep =
     savedStep >= 0 && savedStep < sections.length ? savedStep : 0;
-  let maxReachedStep = currentStep;
+  let maxReachedStep = Math.max(
+    currentStep,
+    savedMaxStep >= 0 && savedMaxStep < sections.length ? savedMaxStep : 0
+  );
+
+  function saveMaxStep() {
+    localStorage.setItem(MAX_STEP_KEY, String(maxReachedStep));
+  }
 
   stepTitles.forEach((title, index) => {
     const tab = document.createElement("button");
@@ -37,11 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
     tab.innerHTML = `${title}<div class="tab-indicator"></div>`;
 
     tab.addEventListener("click", () => {
-      // O usuário só pode clicar se a aba for anterior/atual ou se já tiver liberado aquela etapa
       if (index <= maxReachedStep) {
         goToStep(index);
       } else {
-        // Feedback visual opcional ou alerta sutil de que precisa preencher a etapa atual
         shakeTab(tab);
       }
     });
@@ -55,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tabs.forEach((tab, idx) => {
       tab.classList.toggle("active", idx === currentStep);
 
-      // Estiliza visualmente as abas bloqueadas vs liberadas
       if (idx > maxReachedStep) {
         tab.style.opacity = "0.45";
         tab.style.cursor = "not-allowed";
@@ -75,10 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     currentStep = stepIndex;
-    localStorage.setItem(STEP_KEY, currentStep);
+    if (currentStep > maxReachedStep) {
+      maxReachedStep = currentStep;
+      saveMaxStep();
+    }
+
+    localStorage.setItem(STEP_KEY, String(currentStep));
     updateTabsUI();
 
-    // CALCULA A PORCENTAGEM E ATUALIZA A BARRA E O TEXTO NA TELA
     const percentual = Math.round(((currentStep + 1) / sections.length) * 100);
 
     const progressBar = document.getElementById("globalProgressBar");
@@ -111,13 +120,11 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => (tabElement.style.transform = "translateX(0)"), 200);
   }
 
-  // Injeta botões de "Voltar" e "Continuar" em cada seção
   sections.forEach((section, index) => {
     const actionsDiv = section.querySelector(".acoes-form");
     const footerActions = document.createElement("div");
     footerActions.className = "wizard-footer-actions";
 
-    // Botão Voltar
     if (index > 0) {
       const btnPrev = document.createElement("button");
       btnPrev.type = "button";
@@ -129,20 +136,17 @@ document.addEventListener("DOMContentLoaded", function () {
       footerActions.appendChild(document.createElement("div"));
     }
 
-    // Botão Continuar ou Submeter
     if (index < sections.length - 1) {
       const btnNext = document.createElement("button");
       btnNext.type = "button";
       btnNext.className = "btn-wizard-next";
       btnNext.textContent = "Continuar →";
       btnNext.addEventListener("click", () => {
-        // Valida os campos da seção atual
         const inputs = section.querySelectorAll("input, select, textarea");
         let valid = true;
         let firstInvalid = null;
 
         inputs.forEach((input) => {
-          // Ignora campos opcionais vazios (como complemento ou responsável se maior de idade)
           if (!input.checkValidity()) {
             input.classList.add("is-invalid");
             valid = false;
@@ -153,9 +157,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (valid) {
-          // Libera o acesso à próxima etapa se passar na validação
           if (index + 1 > maxReachedStep) {
             maxReachedStep = index + 1;
+            saveMaxStep();
           }
           goToStep(index + 1);
         } else {
@@ -164,7 +168,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       footerActions.appendChild(btnNext);
     } else {
-      // Na última etapa, insere os botões originais (Enviar / Limpar)
       if (actionsDiv) {
         footerActions.appendChild(actionsDiv);
       }
@@ -173,7 +176,5 @@ document.addEventListener("DOMContentLoaded", function () {
     section.appendChild(footerActions);
   });
 
-  // Inicializa na primeira etapa
-  showStep(0);
   showStep(currentStep);
 });
