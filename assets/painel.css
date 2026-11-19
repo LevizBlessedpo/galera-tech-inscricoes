@@ -1,0 +1,82 @@
+/* ========================================
+   ESTILOS DO PAINEL ADMINISTRATIVO
+   ======================================== */
+
+.painel-container {
+  max-width: 1140px !important;
+}
+
+.painel-header {
+  background: linear-gradient(135deg, var(--azul-escuro-galera), var(--azul-institucional)) !important;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.3) !important;
+  padding: 1.1rem 0 !important;
+}
+
+.painel-header-titulo {
+  color: #ffffff !important;
+  letter-spacing: -0.02em;
+}
+
+.painel-header-subtitulo {
+  color: var(--ciano-galera) !important;
+  font-weight: 500;
+}
+
+.painel-card {
+  border: 1px solid var(--cinza-borda) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16) !important;
+  overflow: hidden;
+}
+
+.painel-card .card-body {
+  background-color: #ffffff;
+}
+
+.painel-resumo {
+  background: rgba(11, 29, 58, 0.78);
+  color: #f8fafc;
+  border: 1px solid rgba(0, 180, 216, 0.28);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+}
+
+.painel-tabela thead th {
+  background-color: #f8fafc !important;
+  color: var(--texto-mutado) !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--cinza-borda) !important;
+}
+
+.painel-tabela tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.painel-tabela tbody tr:hover {
+  background-color: rgba(0, 180, 216, 0.05) !important;
+}
+
+.painel-acoes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+}
+
+.btn-sair-painel {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .painel-card .card-body.p-4 {
+    padding: 1.15rem !important;
+  }
+
+  .painel-acoes {
+    gap: 0.35rem;
+  }
+}

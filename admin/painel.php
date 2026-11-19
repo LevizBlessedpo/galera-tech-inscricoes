@@ -55,6 +55,7 @@ function option(string $v, string $t, string $current): void
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Painel Galera Tech — Administração</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/painel.css">
     <link rel="stylesheet" href="../assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -65,8 +66,8 @@ function option(string $v, string $t, string $current): void
     <header class="cabecalho py-4">
         <div class="container d-flex justify-content-between align-items-center" style="max-width: 1100px;">
             <div>
-                <h1 class="h3 mb-1 fw-bold text-white">Painel de Inscrições</h1>
-                <div class="text-white-50 small">Galera Tech • Área Administrativa</div>
+                <h1 class="h3 mb-1 fw-bold text-dark">Painel de Inscrições</h1>
+                <div class="text-dark-50 small">Galera Tech • Área Administrativa</div>
             </div>
             <a class="btn btn-light btn-sm fw-semibold px-3" href="sair.php">Sair do Sistema</a>
         </div>

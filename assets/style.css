@@ -39,7 +39,7 @@ header.cabecalho {
   position: sticky;
   top: 0;
   z-index: 1030;
-  background: rgb(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0, 180, 216, 0.25);
@@ -56,21 +56,21 @@ header.cabecalho {
 }
 
 .cabecalho-titulo {
-  color: #ffffff;
+  color: var(--azul-escuro-galera);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .cabecalho-subtitulo {
-  color: var(--ciano-galera);
+  color: var(--texto-mutado);
   font-weight: 500;
 }
 
 /* ========================================
-   3. CONTAINER PRINCIPAL E CARD DO FORMULÁRIO
+   3. CONTAINER PRINCIPAL E WIZARD (INDEX)
    ======================================== */
 main.container {
-  max-width: 860px !important;
+  max-width: 860px;
   margin: 0 auto;
   flex: 1;
   padding-top: 1.5rem !important;
@@ -92,7 +92,6 @@ main.container {
   border-radius: 10px;
 }
 
-/* Barra de Progresso com Informação e Cores */
 .wizard-progress-wrapper {
   background: rgba(11, 29, 58, 0.75);
   padding: 12px 16px;
@@ -119,7 +118,6 @@ main.container {
   border-radius: 9999px;
 }
 
-/* Abas de Navegação (Wizard Tabs) */
 .wizard-header-tabs {
   display: flex;
   background: #f8fafc;
@@ -151,9 +149,9 @@ main.container {
   font-weight: 700;
 }
 
-/* ===================
-   BOTÃO DE CONTINUAR
-   =================== */
+/* ========================================
+   4. BOTÕES E SEÇÕES
+   ======================================== */
 .btn-primary,
 .btn-wizard-next {
   background-color: #38bdf8 !important;
@@ -206,7 +204,6 @@ main.container {
   border-color: #94a3b8;
 }
 
-/* Seções e Cards do Form */
 .secao {
   display: none;
   border: none !important;
@@ -244,7 +241,6 @@ main.container {
   margin-right: 0.6rem;
 }
 
-/* Inputs e Botões */
 .form-label {
   font-weight: 600;
   font-size: 0.88rem;
@@ -294,21 +290,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Responsividade Mobile */
 @media (max-width: 768px) {
   .cabecalho-logo-img {
     height: 45px;
   }
+
   .cabecalho-titulo {
     font-size: 1.05rem !important;
   }
+
   .cabecalho-subtitulo {
     font-size: 0.75rem !important;
   }
 }
 
 /* =========================================
-   BOTÃO DE TEMA (MODO CLARO E ESCURO)
+   5. BOTÃO DE TEMA (MODO CLARO E ESCURO)
    ========================================= */
 button.theme-switch {
   position: relative !important;
@@ -358,4 +355,83 @@ body.light-mode .wizard-wrapper {
   background: #ffffff !important;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1) !important;
   border: 1px solid #cbd5e1 !important;
+}
+
+/* ========================================
+   6. PAINEL.CSS ESTILIZAÇÃO
+   ======================================== */
+.painel-container {
+  max-width: 1140px !important;
+}
+
+header.cabecalho.painel-header {
+  background: linear-gradient(135deg, #07111e 0%, #0b1d3a 65%, #112d57 100%) !important;
+  border-bottom: 2px solid rgba(0, 180, 216, 0.45) !important;
+  padding: 1.15rem 0 !important;
+}
+
+.painel-header-titulo {
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.painel-header-subtitulo {
+  color: #00b4d8 !important;
+  font-weight: 500;
+}
+
+.painel-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24) !important;
+  overflow: hidden;
+}
+
+.painel-resumo {
+  background: linear-gradient(90deg, rgba(11, 29, 58, 0.92), rgba(23, 74, 134, 0.85)) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(0, 180, 216, 0.4) !important;
+  border-left: 4px solid #00b4d8 !important;
+  border-radius: 10px !important;
+}
+
+.painel-tabela thead th {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: none !important;
+}
+
+.painel-tabela tbody tr {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.painel-tabela tbody tr:hover {
+  background-color: rgba(0, 180, 216, 0.08) !important;
+}
+
+.painel-acoes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+}
+
+.btn-sair-painel {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-sair-painel:hover {
+  background-color: #ef4444 !important;
+  border-color: #ef4444 !important;
+  color: #ffffff !important;
 }
