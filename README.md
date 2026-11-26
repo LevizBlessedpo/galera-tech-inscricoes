@@ -14,7 +14,7 @@ Formulário web de inscrição para o **Galera Tech**, programa de capacitação
 
 Projeto de conclusão de curso, desenvolvido para a **APETI**.
 
-> **Status:** Front-end concluído. Integração com PHP e MySQL em desenvolvimento.
+> **Status:** Projeto finalizado e entregue
 
 ---
 
