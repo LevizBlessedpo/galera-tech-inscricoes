@@ -208,7 +208,7 @@
             <div class="row g-3">
               <div class="col-md-8">
                 <label for="escola" class="form-label">Nome completo da escola de origem <span class="obrigatorio">*</span></label>
-                <input type="text" class="form-control" id="escola" name="nome_escola" maxlength="150" placeholder="Ex: E.E. (Nome da Escola) evite abreviações" required>
+                <input type="text" class="form-control" id="escola" name="nome_escola" maxlength="150" placeholder="Ex: E.E./E.M/ETEC (Nome completo da Escola) evite abreviações" required>
                 <div class="invalid-feedback">Informe o nome da escola.</div>
               </div>
               <div class="col-md-6">
