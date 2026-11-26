@@ -43,15 +43,9 @@ O objetivo é oferecer um sistema simples e confiável para cadastrar os candida
 | Estrutura | HTML5 |
 | Estilo | CSS3 e Bootstrap 5.3 |
 | Interatividade e validação | JavaScript |
-| Back-end | PHP *(em desenvolvimento)* |
-| Banco de dados | MySQL *(em desenvolvimento)* |
-| Ambiente de desenvolvimento | Laragon (servidor local Apache/PHP/MySQL) |
-
----
-
-## 🧪 Ambiente de testes
-
-Esta versão é uma demonstração. Use **somente dados fictícios** ao testar no seu ambiente local (Laragon). O Aviso de Privacidade é uma minuta e deve ser revisado pela organização antes do uso com dados reais.
+| Back-end | PHP |
+| Banco de dados | MySQL |
+| Ambiente de desenvolvimento | (servidor local Laragon/PHP/MySQL) |
 
 ---
 
